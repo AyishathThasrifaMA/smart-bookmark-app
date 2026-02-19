@@ -11,27 +11,20 @@ export async function middleware(req: NextRequest) {
     {
       cookies: {
         get: (name) => req.cookies.get(name)?.value,
-        set: (name, value, options) => {
-          req.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          res.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove: (name, options) => {
-          req.cookies.delete(name);
-          res.cookies.delete(name);
-        },
       },
     }
   );
 
   const { data } = await supabase.auth.getUser();
+
+  // Handle root path redirect
+  if (req.nextUrl.pathname === "/") {
+    if (!data.user) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    } else {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+  }
 
   if (!data.user && req.nextUrl.pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL("/login", req.url));
@@ -39,3 +32,7 @@ export async function middleware(req: NextRequest) {
 
   return res;
 }
+
+export const config = {
+  matcher: ["/", "/dashboard/:path*"],
+};
