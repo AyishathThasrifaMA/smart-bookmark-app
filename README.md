@@ -181,7 +181,7 @@ interface Bookmark {
 
 ## Live Demo
 
-https://github.com/AyishathThasrifaMA/smart-bookmark-app.git
+https://smart-bookmark-app-44ra.vercel.app/
 
 ## GitHub Repository
 
