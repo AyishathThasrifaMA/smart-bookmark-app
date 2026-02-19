@@ -181,11 +181,11 @@ interface Bookmark {
 
 ## Live Demo
 
-[Live Vercel URL] - (Will be updated after deployment)
+https://github.com/AyishathThasrifaMA/smart-bookmark-app.git
 
 ## GitHub Repository
 
-[GitHub Repository URL] - (Will be updated after pushing to GitHub)
+https://github.com/AyishathThasrifaMA/smart-bookmark-app.git
 
 ## Future Improvements
 
